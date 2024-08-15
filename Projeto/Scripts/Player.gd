@@ -39,7 +39,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if !vivo: return 
 	if event.is_action_pressed("Espaco"):
 		var b : Node2D = bomba.instantiate()
-		var tile : Vector2i = GameController.local_to_map(global_position)
+		tile = GameController.local_to_map(global_position)
 		b.global_position = GameController.map_to_local(tile)
 		get_tree().root.add_child(b)
 

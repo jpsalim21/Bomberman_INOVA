@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_m7f0q"]
 [ext_resource type="Texture2D" uid="uid://cok0achc1yitg" path="res://Sprites/DinoSprites - doux.png" id="2_nanqv"]
-[ext_resource type="TileSet" uid="uid://bwn0jedjlmu3g" path="res://Tileset.tres" id="3_sxbli"]
+[ext_resource type="TileSet" uid="uid://bwn0jedjlmu3g" path="res://Objetos/Tileset.tres" id="3_sxbli"]
 [ext_resource type="Script" path="res://Scripts/caixas_quebraveis.gd" id="4_3v6hn"]
 [ext_resource type="Script" path="res://Scripts/inimigo.gd" id="7_j0edr"]
 [ext_resource type="Texture2D" uid="uid://cnv8g57pdcdxd" path="res://Sprites/DinoSprites - mort.png" id="7_jpaxu"]
