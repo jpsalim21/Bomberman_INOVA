@@ -5,6 +5,11 @@ var explosao = preload("res://Objetos/explosao.tscn")
 
 var tilemapReferencia : TileMapLayer
 
+# Roda a lógica da explosão
+# Pega 2 tiles acima, abaixo e dos lados
+# Emite que eles explodiram para todos os outros elementos do jogo
+# Assim, cada elemento pode verificar se recebeu dano
+
 func explodir(pos : Vector2):
 	var tilePos : Vector2i = local_to_map(pos)
 	explodeEmTilesX(0,-3, tilePos, -1)

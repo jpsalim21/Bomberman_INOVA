@@ -9,6 +9,10 @@ const SPEED = 100.0
 var tile : Vector2i
 var vivo = true
 
+# O player detecta os inputs e realiza ações de acordo
+# ELe podemovimentar, posicionar bombas e tomar dano. 
+# O maior script que vamos ter, mas que vai ser dado aos poucos
+
 func _ready() -> void:
 	GameController.tomouDanoNoTile.connect(verificaSeTomouDano)
 

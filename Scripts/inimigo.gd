@@ -7,6 +7,10 @@ const SPEED = 50.0
 
 var tile : Vector2i
 
+# O inimigo vai andar de um lado para outro, verificando se tem obstáculo
+# e retornando 
+# Além disso, quando toma dano, é eliminado
+
 func _ready() -> void:
 	direcao = direcao.normalized()
 	raycast.target_position = direcao * 7

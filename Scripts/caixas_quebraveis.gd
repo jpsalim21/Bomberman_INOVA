@@ -1,6 +1,9 @@
 extends TileMapLayer
 
-# Called when the node enters the scene tree for the first time.
+# Quando um tile toma dano, ou seja, quanto tomouDanoNoTile é emitida
+# Assim, conectamos e retiramos esse tile
+# Isso só funciona pq esse layer é responsável pelos objetos quebráveis
+
 func _ready() -> void:
 	GameController.tomouDanoNoTile.connect(explodirTile)
 
