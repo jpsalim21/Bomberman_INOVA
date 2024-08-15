@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://c38lhowds01qm"]
+[gd_scene load_steps=22 format=4 uid="uid://c38lhowds01qm"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_m7f0q"]
 [ext_resource type="Texture2D" uid="uid://cok0achc1yitg" path="res://Sprites/DinoSprites - doux.png" id="2_nanqv"]
 [ext_resource type="TileSet" uid="uid://bwn0jedjlmu3g" path="res://Tileset.tres" id="3_sxbli"]
 [ext_resource type="Script" path="res://caixas_quebraveis.gd" id="4_3v6hn"]
 [ext_resource type="PackedScene" uid="uid://bw35c657ir78h" path="res://Objetos/game_controller.tscn" id="4_tblcr"]
+[ext_resource type="Texture2D" uid="uid://ev80p7gramb2" path="res://Sprites/explosion-1.png" id="6_xxkux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ya7cj"]
 size = Vector2(8, 7)
@@ -32,6 +33,22 @@ region = Rect2(192, 0, 24, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_h1mnj"]
 atlas = ExtResource("2_nanqv")
 region = Rect2(216, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vg71i"]
+atlas = ExtResource("2_nanqv")
+region = Rect2(312, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vhfk"]
+atlas = ExtResource("2_nanqv")
+region = Rect2(336, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ih843"]
+atlas = ExtResource("2_nanqv")
+region = Rect2(360, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8ucy"]
+atlas = ExtResource("2_nanqv")
+region = Rect2(384, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6sm86"]
 atlas = ExtResource("2_nanqv")
@@ -72,6 +89,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vg71i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vhfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ih843")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8ucy")
+}],
+"loop": false,
+"name": &"Morrer",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_6sm86")
 }, {
 "duration": 1.0,
@@ -99,9 +133,10 @@ shape = SubResource("RectangleShape2D_ya7cj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_7uxes")
-animation = &"Correr"
+animation = &"Morrer"
 autoplay = "default"
-frame_progress = 0.368208
+frame = 3
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -127,3 +162,8 @@ tile_set = ExtResource("3_sxbli")
 script = ExtResource("4_3v6hn")
 
 [node name="GameController" parent="." instance=ExtResource("4_tblcr")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-72, -40)
+texture = ExtResource("6_xxkux")
+hframes = 8
