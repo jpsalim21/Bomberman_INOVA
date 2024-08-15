@@ -6,8 +6,7 @@ extends Node2D
 func _ready() -> void:
 	timer.timeout.connect(destruir)
 	timer.start()
-	
 
 func destruir():
-	
+	GameController.explodir(global_position)
 	queue_free()

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw35c657ir78h"]
+
+[ext_resource type="Script" path="res://GameController.gd" id="1_ifag4"]
+
+[sub_resource type="TileSet" id="TileSet_jbuuj"]
+
+[node name="GameController" type="TileMapLayer"]
+tile_set = SubResource("TileSet_jbuuj")
+script = ExtResource("1_ifag4")
