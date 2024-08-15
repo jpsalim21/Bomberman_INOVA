@@ -13,8 +13,6 @@ func _ready() -> void:
 	GameController.tomouDanoNoTile.connect(verificaSeTomouDano)
 
 func _physics_process(delta: float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_vector("Esquerda", "Direita", "Cima", "Baixo")
 	velocity = direction.normalized() * SPEED
 	
@@ -46,4 +44,5 @@ func verificaSeTomouDano(pos : Vector2i):
 		set_physics_process(false)
 		vivo = false
 		sprite.play("Morrer")
-		
+		await get_tree().create_timer(2).timeout
+		queue_free()

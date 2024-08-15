@@ -517,6 +517,7 @@ texture = ExtResource("2_54fkr")
 7:14/0 = 0
 9:14/0 = 0
 0:15/0 = 0
+0:15/0/custom_data_0 = true
 1:15/0 = 0
 2:15/0 = 0
 3:15/0 = 0
@@ -529,5 +530,7 @@ texture = ExtResource("2_54fkr")
 
 [resource]
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "wall"
+custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_fx5wt")
 sources/2 = SubResource("TileSetAtlasSource_osuux")

@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://veqiblffs1o8"]
+
+[ext_resource type="Texture2D" uid="uid://ev80p7gramb2" path="res://Sprites/explosion-1.png" id="1_cm7nb"]
+[ext_resource type="Script" path="res://Scripts/explosao.gd" id="2_gcwap"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwb1i"]
+atlas = ExtResource("1_cm7nb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iennh"]
+atlas = ExtResource("1_cm7nb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcy3w"]
+atlas = ExtResource("1_cm7nb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7eib"]
+atlas = ExtResource("1_cm7nb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0hw6"]
+atlas = ExtResource("1_cm7nb")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ephp"]
+atlas = ExtResource("1_cm7nb")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teuax"]
+atlas = ExtResource("1_cm7nb")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ctlw"]
+atlas = ExtResource("1_cm7nb")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kcm5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwb1i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iennh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcy3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7eib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0hw6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ephp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teuax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ctlw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Explosao" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_5kcm5")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+script = ExtResource("2_gcwap")

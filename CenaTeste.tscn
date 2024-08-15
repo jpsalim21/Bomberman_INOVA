@@ -1,11 +1,13 @@
-[gd_scene load_steps=22 format=4 uid="uid://c38lhowds01qm"]
+[gd_scene load_steps=39 format=4 uid="uid://c38lhowds01qm"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_m7f0q"]
 [ext_resource type="Texture2D" uid="uid://cok0achc1yitg" path="res://Sprites/DinoSprites - doux.png" id="2_nanqv"]
 [ext_resource type="TileSet" uid="uid://bwn0jedjlmu3g" path="res://Tileset.tres" id="3_sxbli"]
-[ext_resource type="Script" path="res://caixas_quebraveis.gd" id="4_3v6hn"]
+[ext_resource type="Script" path="res://Scripts/caixas_quebraveis.gd" id="4_3v6hn"]
 [ext_resource type="PackedScene" uid="uid://bw35c657ir78h" path="res://Objetos/game_controller.tscn" id="4_tblcr"]
-[ext_resource type="Texture2D" uid="uid://ev80p7gramb2" path="res://Sprites/explosion-1.png" id="6_xxkux"]
+[ext_resource type="Script" path="res://Scripts/inimigo.gd" id="7_j0edr"]
+[ext_resource type="Texture2D" uid="uid://cnv8g57pdcdxd" path="res://Sprites/DinoSprites - mort.png" id="7_jpaxu"]
+[ext_resource type="Script" path="res://Scripts/wallReference.gd" id="7_w141j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ya7cj"]
 size = Vector2(8, 7)
@@ -119,12 +121,129 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jown1"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(312, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n6ys"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(336, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0woj1"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(360, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auwog"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(384, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xju4p"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mh1nt"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1reci"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eqse"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k232y"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(192, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77smr"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(216, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq3xy"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ah74"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61141"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvxss"]
+atlas = ExtResource("7_jpaxu")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xp18x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jown1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n6ys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0woj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auwog")
+}],
+"loop": false,
+"name": &"Morrer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xju4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mh1nt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1reci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eqse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k232y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77smr")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq3xy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ah74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61141")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvxss")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Player" type="CharacterBody2D" parent="."]
 y_sort_enabled = true
 position = Vector2(-118, -42)
+collision_layer = 2
 script = ExtResource("1_m7f0q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -157,13 +276,75 @@ tile_map_data = PackedByteArray("AAD5/wIAAgAAAAoAAAD5/wAAAgAAAAoAAAD5//7/AgAAAAo
 tile_set = ExtResource("3_sxbli")
 
 [node name="CaixasQuebraveis" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD6//3/AgACAAEAAAD6////AgACAAEAAAD6/wEAAgACAAEAAAD4/wEAAgACAAEAAAD6/wMAAgACAAEAAAD8/wEAAgACAAEAAAD8/wMAAgACAAEAAAD+/wMAAgACAAEAAAD+/wEAAgACAAEAAAD+////AgACAAEAAAD8////AgACAAEAAAD8//3/AgACAAEAAAD+//3/AgACAAEAAAAAAP3/AgACAAEAAAAAAP//AgACAAEAAAAAAAEAAgACAAEAAAAAAAMAAgACAAEAAAACAAMAAgACAAEAAAACAAEAAgACAAEAAAACAP//AgACAAEAAAACAP3/AgACAAEAAAAEAP3/AgACAAEAAAAEAP//AgACAAEAAAAEAAEAAgACAAEAAAAEAAMAAgACAAEAAAAGAAMAAgACAAEAAAAGAAEAAgACAAEAAAAGAP//AgACAAEAAAAGAP3/AgACAAEAAAA=")
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD6////AgACAAEAAAD4/wEAAgACAAEAAAD6/wMAAgACAAEAAAD8/wMAAgACAAEAAAD+/wMAAgACAAEAAAD+/wEAAgACAAEAAAD+////AgACAAEAAAD+//3/AgACAAEAAAACAAMAAgACAAEAAAACAP//AgACAAEAAAAEAAEAAgACAAEAAAAGAP//AgACAAEAAAAGAP3/AgACAAEAAAAAAAEAAgACAAEAAAAAAP3/AgACAAEAAAD8//3/AgACAAEAAAABAAEAAgACAAEAAAAAAAAAAgACAAEAAAAFAAEAAgACAAEAAAAEAAAAAgACAAEAAAA=")
 tile_set = ExtResource("3_sxbli")
 script = ExtResource("4_3v6hn")
 
 [node name="GameController" parent="." instance=ExtResource("4_tblcr")]
+unique_name_in_owner = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-72, -40)
-texture = ExtResource("6_xxkux")
-hframes = 8
+[node name="WallReference" type="TileMapLayer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 35
+z_as_relative = false
+tile_map_data = PackedByteArray("AAD5//7/AgAAAA8AAAD7//7/AgAAAA8AAAD9//7/AgAAAA8AAAD///7/AgAAAA8AAAABAP7/AgAAAA8AAAADAP7/AgAAAA8AAAAFAP7/AgAAAA8AAAAHAP7/AgAAAA8AAAAHAAAAAgAAAA8AAAAFAAAAAgAAAA8AAAADAAAAAgAAAA8AAAABAAAAAgAAAA8AAAD//wAAAgAAAA8AAAD9/wAAAgAAAA8AAAD7/wAAAgAAAA8AAAD5/wAAAgAAAA8AAAAHAAIAAgAAAA8AAAAFAAIAAgAAAA8AAAADAAIAAgAAAA8AAAABAAIAAgAAAA8AAAD//wIAAgAAAA8AAAD9/wIAAgAAAA8AAAD7/wIAAgAAAA8AAAD5/wIAAgAAAA8AAAAIAPv/AgAAAA8AAAAIAPz/AgAAAA8AAAAIAP3/AgAAAA8AAAAIAP7/AgAAAA8AAAAIAP//AgAAAA8AAAAIAAAAAgAAAA8AAAAIAAEAAgAAAA8AAAAIAAIAAgAAAA8AAAAIAAMAAgAAAA8AAAAIAAQAAgAAAA8AAAAHAAQAAgAAAA8AAAAGAAQAAgAAAA8AAAAFAAQAAgAAAA8AAAAEAAQAAgAAAA8AAAADAAQAAgAAAA8AAAACAAQAAgAAAA8AAAABAAQAAgAAAA8AAAAAAAQAAgAAAA8AAAD//wQAAgAAAA8AAAD+/wQAAgAAAA8AAAD9/wQAAgAAAA8AAAD8/wQAAgAAAA8AAAD7/wQAAgAAAA8AAAD6/wQAAgAAAA8AAAD5/wQAAgAAAA8AAAD4/wQAAgAAAA8AAAD3/wQAAgAAAA8AAAD3/wMAAgAAAA8AAAD3/wIAAgAAAA8AAAD3/wEAAgAAAA8AAAD3/wAAAgAAAA8AAAD3////AgAAAA8AAAD3//7/AgAAAA8AAAD3//3/AgAAAA8AAAD3//z/AgAAAA8AAAD3//v/AgAAAA8AAAD4//v/AgAAAA8AAAD5//v/AgAAAA8AAAD6//v/AgAAAA8AAAD7//v/AgAAAA8AAAD8//v/AgAAAA8AAAD9//v/AgAAAA8AAAD+//v/AgAAAA8AAAD///v/AgAAAA8AAAAAAPv/AgAAAA8AAAABAPv/AgAAAA8AAAACAPv/AgAAAA8AAAADAPv/AgAAAA8AAAAEAPv/AgAAAA8AAAAFAPv/AgAAAA8AAAAGAPv/AgAAAA8AAAAHAPv/AgAAAA8AAAAHAPz/AgAAAA8AAAAGAPz/AgAAAA8AAAAFAPz/AgAAAA8AAAAEAPz/AgAAAA8AAAADAPz/AgAAAA8AAAACAPz/AgAAAA8AAAABAPz/AgAAAA8AAAAAAPz/AgAAAA8AAAD///z/AgAAAA8AAAD+//z/AgAAAA8AAAD9//z/AgAAAA8AAAD8//z/AgAAAA8AAAD7//z/AgAAAA8AAAD6//z/AgAAAA8AAAD5//z/AgAAAA8AAAD4//z/AgAAAA8AAAA=")
+tile_set = ExtResource("3_sxbli")
+script = ExtResource("7_w141j")
+
+[node name="Inimigo" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(88, -39)
+collision_layer = 2
+script = ExtResource("7_j0edr")
+direcao = Vector2(1, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inimigo"]
+shape = SubResource("RectangleShape2D_ya7cj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Inimigo"]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_xp18x")
+animation = &"Morrer"
+autoplay = "Walk"
+
+[node name="RayCast2D" type="RayCast2D" parent="Inimigo"]
+target_position = Vector2(10, 0)
+
+[node name="Inimigo2" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-58, 27)
+collision_layer = 2
+script = ExtResource("7_j0edr")
+direcao = Vector2(0, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inimigo2"]
+shape = SubResource("RectangleShape2D_ya7cj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Inimigo2"]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_xp18x")
+animation = &"Morrer"
+autoplay = "Walk"
+
+[node name="RayCast2D" type="RayCast2D" parent="Inimigo2"]
+target_position = Vector2(10, 0)
+
+[node name="Inimigo3" type="CharacterBody2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-88, 27)
+collision_layer = 2
+script = ExtResource("7_j0edr")
+direcao = Vector2(1, 0)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Inimigo3"]
+shape = SubResource("RectangleShape2D_ya7cj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Inimigo3"]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_xp18x")
+animation = &"Morrer"
+autoplay = "Walk"
+
+[node name="RayCast2D" type="RayCast2D" parent="Inimigo3"]
+target_position = Vector2(10, 0)
